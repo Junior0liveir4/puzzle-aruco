@@ -1,9 +1,11 @@
 # 🧩📷 ArUco Puzzle Game – Visão Computacional & Interatividade
-Este repositório contém o ecossistema completo do ArUco Puzzle Game, uma aplicação interativa que combina visão computacional, sistemas distribuídos e automação. O projeto transforma marcadores ArUco em peças dinâmicas de um quebra-cabeça, permitindo montar diferentes temas (Pokémon, GTA, Mario, etc.) em tempo real com feedback visual e sonoro.
+Este repositório contém o ecossistema completo do **ArUco Puzzle Game**, uma aplicação interativa que combina visão computacional, sistemas distribuídos e automação. O projeto transforma marcadores ArUco em peças dinâmicas de um quebra-cabeça, permitindo montar diferentes temas (Pokémon, GTA, Mario, etc.) em tempo real com feedback visual e sonoro.
 
 Desenvolvido no **LabSEA (IFES - Campus Guarapari)**, o sistema utiliza o framework IS-Wire para consumir streams de vídeo via RabbitMQ e enviar comandos para atuadores externos (ESP32) e câmeras PTZ.
 
-##✨ Funcionalidades
+---
+
+## ✨ Funcionalidades
 Além da detecção de marcadores, esta versão aprimorada inclui:
 
 - 🎭 **Multi-Temas:** Suporte a 6 temas diferentes configuráveis via código.
@@ -20,7 +22,9 @@ Além da detecção de marcadores, esta versão aprimorada inclui:
 
 - 🧠 **Validação Inteligente:** Algoritmo baseado em K-Means e Homografia para verificar se o quebra-cabeça foi montado na ordem correta.
 
-##🛠️ Requisitos do Sistema
+---
+
+## 🛠️ Requisitos do Sistema
 Dependências Python
 Instale as bibliotecas necessárias:
 
@@ -34,7 +38,9 @@ pip install opencv-python numpy is-wire is-msgs pygame scikit-learn Pillow
 
 - **Câmera:** Gateway de câmera publicando frames via IS-Wire.
 
-##🚀 Como Executar o Jogo Principal
+---
+
+## 🚀 Como Executar o Jogo Principal
 1. **Configuração do Tema:** No arquivo projeto_jepe+sound.py, escolha o tema desejado alterando a variável game.
 
 2. **Caminhos:** Certifique-se de que as pastas Imagem1, Imagem3, etc., contenham os arquivos mapa_X.png.
@@ -45,7 +51,9 @@ pip install opencv-python numpy is-wire is-msgs pygame scikit-learn Pillow
 python3 projeto_jepe+sound.py
 ```
 
-##📂 Códigos Auxiliares e de Apoio
+---
+
+## 📂 Códigos Auxiliares e de Apoio
 Para facilitar a preparação do ambiente e testes, o repositório conta com:
 
 1. ✂️ **crop_png.py (Preparador de Imagens)**
@@ -62,7 +70,9 @@ Um script minimalista para validar a integração com o hardware externo.
 
 - **Uso:** Utilize para testar se o seu ESP32 (ou outro atuador) está recebendo corretamente o sinal de "Vitória" via RabbitMQ sem precisar montar o quebra-cabeça inteiro.
 
-##📂 Estrutura do Projeto
+---
+
+## 📂 Estrutura do Projeto
 ```
 quebra-cabeça_aruco/
 ├── projeto_jepe+sound.py   # Script principal do jogo
@@ -76,7 +86,10 @@ quebra-cabeça_aruco/
 │   └── intro_pokemon.mp3
 └── ...
 ```
-##🧠 Detalhes Técnicos do Processamento
+
+---
+
+## 🧠 Detalhes Técnicos do Processamento
 O sistema opera com três threads principais para garantir fluidez (Zero Latency):
 
 1. **Thread de Recepção:** Consome o broker RabbitMQ e mantém apenas o frame mais recente em uma fila (queue.Queue).
@@ -91,8 +104,8 @@ O sistema opera com três threads principais para garantir fluidez (Zero Latency
 
 - Compara a grade detectada com a grade expected (gerada aleatoriamente no início de cada jogo, exceto no modo Demo).
 
-##📬 Contato
+---
+
+## 📬 Contato
 Desenvolvido por Junior e a equipe do LabSEA.
 Para suporte, verifique a documentação interna do laboratório ou entre em contato com os responsáveis pelo projeto de Visão Computacional.
-
-Este projeto faz parte das iniciativas de Iniciação Científica e Extensão do IFES Guarapari.
