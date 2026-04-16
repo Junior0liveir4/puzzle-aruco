@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: puzzle-aruco-config
+data:
+  BROKER_URI: "amqp://guest:guest@10.10.2.211:30000"
+  CAMERA_ID: "5"
+  GAME_NAME: "Demo"
+
+# Altere GAME_NAME para escolher o jogo:
+# Angry ArUcos
+# PokéPuzzle GO!
+# GTA: San Puzzle
+# Super Mario Puzzle
+# League of ArUcos
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: puzzle-aruco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: puzzle-aruco
+  template:
+    metadata:
+      labels:
+        app: puzzle-aruco
+    spec:
+      containers:
+      - name: puzzle-aruco
+        image: juniorgui/puzzle-aruco:v2  # Certifique-se de que a imagem inclua as pastas ImagemX
+        resources:
+          requests:
+            cpu: "800m"
+            memory: "512Mi"
+          limits:
+            cpu: "800m"
+            memory: "512Mi"
+        envFrom:
+        - configMapRef:
+            name: puzzle-aruco-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: puzzle-aruco
+spec:
+  selector:
+    app: puzzle-aruco
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
