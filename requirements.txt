@@ -1,0 +1,9 @@
+opencv-python
+numpy
+pygame
+scikit-learn
+Pillow
+is-wire
+is-msgs
+protobuf
+six
