@@ -64,12 +64,5 @@ kubectl apply -f puzzle-aruco.yaml
 
 ---
 
-##  📂 Ferramentas de Apoio Incluídas
-- **crop_png.py:** Script para preparar novas imagens, realizando o recorte técnico em grade 4x4.
-
-- **test_esp32.py:** Utilitário para testar a publicação de mensagens de vitória para o hardware externo.
-
----
-
 ##  📬 Contato
 Desenvolvido por Junior e o time do **LabSEA (IFES Guarapari)**. Este projeto exemplifica a modernização de ferramentas de laboratório através da containerização.
